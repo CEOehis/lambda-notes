@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import App from 'containers/App';
+import AppRouting from 'AppRouting';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AppRouting />, document.getElementById('root'));
 registerServiceWorker();
 if(module.hot) module.hot.accept();
