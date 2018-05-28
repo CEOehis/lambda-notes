@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,} from 'reactstrap';
+  NavItem,} from 'reactstrap';
 
 class NavbarMenu extends React.Component {
   constructor(props) {
@@ -25,17 +24,17 @@ class NavbarMenu extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="container">
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Lambda Notes</NavbarBrand>
+          <Link to="/" className="navbar-brand">Lambda Notes</Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">View Your Notes</NavLink>
+                <Link to="/notes" className="nav-link">View Your Notes</Link>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">+ Create New Note</NavLink>
+                <Link to="/create" className="nav-link">+ Create New Note</Link>
               </NavItem>
             </Nav>
           </Collapse>
