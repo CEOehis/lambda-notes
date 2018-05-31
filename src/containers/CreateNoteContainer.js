@@ -39,10 +39,12 @@ class CreateNoteContainer extends Component {
       body: content,
       id: notes.length + 1
     }
-    notes.push(note);
+    // notes.push(note);
     console.log(note);
     this.setState({
-      notes: notes
+      notes: [...notes, note],
+      title: '',
+      content: ''
     })
   }
 
