@@ -9,7 +9,7 @@ class NoteListContainer extends Component {
   render() {
     return (
       <div className="container">
-        <NoteList notes={notes} />
+        <NoteList notes={notes} {...this.props} />
       </div>
     )
   }

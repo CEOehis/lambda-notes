@@ -7,9 +7,9 @@ import {
   CardTitle
 } from 'reactstrap';
 
-const Note = ({note}) => (
+const Note = ({note, ...props}) => (
   <div style={{paddingBottom: '10px'}} key={note.id} className="col-md-4">
-    <Card>
+    <Card onClick={() => props.history.push('notes/' + note.id)} >
       <CardBody>
         <CardTitle>{note.title}</CardTitle>
         <hr />
