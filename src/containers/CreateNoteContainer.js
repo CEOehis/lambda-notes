@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Input from 'Input';
 import TextArea from 'TextArea';
 import { Button } from 'reactstrap';
-// temporarily use mock notes
-import { notes } from '../mocks/notes'
 
 class CreateNoteContainer extends Component {
   constructor() {
@@ -12,7 +10,6 @@ class CreateNoteContainer extends Component {
     this.state = {
       title: '',
       content: '',
-      notes: notes
     }
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -33,19 +30,12 @@ class CreateNoteContainer extends Component {
   }
 
   saveNote() {
-    const { title, content, notes } = this.state;
-    const note = {
-      title,
-      body: content,
-      id: notes.length + 1
-    }
-    // notes.push(note);
-    console.log(note);
+    const { title, content } = this.state;
     this.setState({
-      notes: [...notes, note],
       title: '',
       content: ''
-    })
+    });
+    this.props.onSaveNote(title, content);
   }
 
   render() {
