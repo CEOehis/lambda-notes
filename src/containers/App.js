@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="container">
         <h2>Your Notes</h2>
-        <NoteListContainer />
+        <NoteListContainer {...this.props} />
       </div>
     );
   }
