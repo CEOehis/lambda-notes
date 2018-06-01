@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import NoteDetail from 'NoteDetail';
 
 import { notes } from '../mocks/notes';
@@ -24,3 +25,11 @@ class NoteDetailContainer extends Component {
 }
 
 export default NoteDetailContainer;
+
+NoteDetailContainer.propTypes = {
+  note: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired
+  })
+}

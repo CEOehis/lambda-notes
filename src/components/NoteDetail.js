@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 const NoteDetail = ({note}) => (
   <div>
@@ -13,3 +14,11 @@ const NoteDetail = ({note}) => (
 );
 
 export default NoteDetail;
+
+NoteDetail.propTypes = {
+  note: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired
+  })
+}
