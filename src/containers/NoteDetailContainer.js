@@ -7,6 +7,7 @@ class NoteDetailContainer extends Component {
     super();
 
     this.editNote = this.editNote.bind(this);
+    this.deleteNote = this.deleteNote.bind(this);
   }
 
   editNote() {
@@ -14,10 +15,14 @@ class NoteDetailContainer extends Component {
     this.props.history.push(this.props.location.pathname + '/edit');
   }
 
+  deleteNote() {
+    console.log('note will be deleted');
+  }
+
   render() {
     return (
       <div className="container">
-        <NoteDetail note={this.props.notes[this.props.match.params.id - 1]} editNote={this.editNote}/>
+        <NoteDetail note={this.props.notes[this.props.match.params.id - 1]} editNote={this.editNote} deleteNote={this.deleteNote} />
       </div>
     )
   }
