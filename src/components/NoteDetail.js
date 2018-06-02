@@ -2,10 +2,10 @@ import React from 'react';
 import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const NoteDetail = ({note}) => (
+const NoteDetail = ({note, editNote}) => (
   <div>
     <div>
-      <Button color="success">edit</Button>
+      <Button onClick={editNote} color="success">edit</Button>
       <Button color="danger">delete</Button>
     </div>
     <h1>{note.title}</h1>
@@ -20,5 +20,6 @@ NoteDetail.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired
-  })
+  }),
+  editNote: PropTypes.func.isRequired
 }
