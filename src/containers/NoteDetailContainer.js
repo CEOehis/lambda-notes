@@ -16,7 +16,9 @@ class NoteDetailContainer extends Component {
   }
 
   deleteNote() {
-    console.log('note will be deleted');
+    this.props.history.push('/')
+    const noteId = this.props.match.params.id;
+    this.props.onDeleteNote(noteId);
   }
 
   render() {

@@ -18,6 +18,7 @@ class AppRouting extends Component {
 
     this.onSaveNote = this.onSaveNote.bind(this);
     this.onEditNote = this.onEditNote.bind(this);
+    this.onDeleteNote = this.onDeleteNote.bind(this);
   }
 
   onSaveNote(title, content) {
@@ -40,6 +41,15 @@ class AppRouting extends Component {
     })
   }
 
+  onDeleteNote(noteId) {
+    console.log(noteId);
+    let notesCopy = [...this.state.notes];
+    notesCopy.splice((noteId - 1), 1);
+    this.setState({
+      notes: notesCopy
+    })
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -47,7 +57,7 @@ class AppRouting extends Component {
           <NavbarMenu />
           <Switch>
             <Route path="/notes/:id/edit" render={(props) => <EditNoteContainer notes={this.state.notes} onEditNote={this.onEditNote} {...props}/>} />
-            <Route path="/notes/:id" render={(props) => <NoteDetailContainer notes={this.state.notes} {...props} />} />
+            <Route path="/notes/:id" render={(props) => <NoteDetailContainer notes={this.state.notes} onDeleteNote={this.onDeleteNote} {...props} />} />
             <Route path="/notes" render={(props) => <App notes={this.state.notes} {...props} />} />
             <Route path="/create" render={(props) => <CreateNoteContainer notes={this.state.notes} onSaveNote={this.onSaveNote} {...props} />} />
             <Redirect from="/" to="/notes" />
