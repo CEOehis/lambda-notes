@@ -3,6 +3,7 @@ import { BrowserRouter,Switch, Route, Redirect } from 'react-router-dom';
 import App from 'App';
 import NavbarMenu from 'NavbarMenu';
 import CreateNoteContainer from 'CreateNoteContainer';
+import EditNoteContainer from 'EditNoteContainer';
 import NoteDetailContainer from 'NoteDetailContainer'
 
 import { notes } from '../mocks/notes';
@@ -16,6 +17,7 @@ class AppRouting extends Component {
     }
 
     this.onSaveNote = this.onSaveNote.bind(this);
+    this.onEditNote = this.onEditNote.bind(this);
   }
 
   onSaveNote(title, content) {
@@ -30,12 +32,21 @@ class AppRouting extends Component {
     })
   }
 
+  onEditNote(note) {
+    let notesCopy = [...this.state.notes];
+    notesCopy[note.id - 1] = {...notesCopy[note.id - 1], ...note};
+    this.setState({
+      notes: notesCopy
+    })
+  }
+
   render() {
     return (
       <BrowserRouter>
         <div>
           <NavbarMenu />
           <Switch>
+            <Route path="/notes/:id/edit" render={(props) => <EditNoteContainer notes={this.state.notes} onEditNote={this.onEditNote} {...props}/>} />
             <Route path="/notes/:id" render={(props) => <NoteDetailContainer notes={this.state.notes} {...props} />} />
             <Route path="/notes" render={(props) => <App notes={this.state.notes} {...props} />} />
             <Route path="/create" render={(props) => <CreateNoteContainer notes={this.state.notes} onSaveNote={this.onSaveNote} {...props} />} />
