@@ -25,7 +25,7 @@ class NavbarMenu extends React.Component {
   render() {
     return (
       <div className="container">
-        <Navbar color="light" light expand="md">
+        <Navbar color="dark" dark expand="md">
           <Link to="/" className="navbar-brand">Lambda Notes</Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
