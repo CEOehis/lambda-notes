@@ -41,6 +41,7 @@ class EditNoteContainer extends Component {
       body: content,
       id: +this.props.match.params.id
     }
+    this.props.history.push('/');
     this.props.onEditNote(note);
   }
 

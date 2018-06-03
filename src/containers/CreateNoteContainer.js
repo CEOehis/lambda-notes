@@ -35,6 +35,7 @@ class CreateNoteContainer extends Component {
       title: '',
       content: ''
     });
+    this.props.history.push('/');
     this.props.onSaveNote(title, content);
   }
 
