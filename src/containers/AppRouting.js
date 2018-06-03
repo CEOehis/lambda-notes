@@ -40,7 +40,6 @@ class AppRouting extends Component {
   }
 
   onDeleteNote(noteId) {
-    console.log(noteId);
     let notesCopy = [...this.state.notes];
     notesCopy.splice((noteId - 1), 1);
     this.setState({

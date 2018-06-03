@@ -11,7 +11,6 @@ class NoteDetailContainer extends Component {
   }
 
   editNote() {
-    console.log('note editing');
     this.props.history.push(this.props.location.pathname + '/edit');
   }
 
