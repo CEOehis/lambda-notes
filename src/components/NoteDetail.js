@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const NoteDetail = ({note, editNote, deleteNote}) => (
-  <div>
+  <div style={{marginTop: '20px'}} >
     <div>
       <Button onClick={editNote} color="success">edit</Button>
       <Button onClick={deleteNote} color="danger">delete</Button>
