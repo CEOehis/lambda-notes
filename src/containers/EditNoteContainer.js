@@ -16,6 +16,7 @@ class EditNoteContainer extends Component {
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
     this.editNote = this.editNote.bind(this);
+    this.goBack = this.goBack.bind(this);
   }
 
   handleTitleChange(event) {
@@ -45,6 +46,10 @@ class EditNoteContainer extends Component {
     this.props.onEditNote(note);
   }
 
+  goBack() {
+    this.props.history.goBack();
+  }
+
   render() {
     const { title, content } = this.state;
     return (
@@ -66,6 +71,7 @@ class EditNoteContainer extends Component {
           rows='10'
         />
         <Button onClick={this.editNote} color="success">Save</Button>
+        <Button onClick={this.goBack} color="secondary">Back</Button>
       </div>
     )
   }

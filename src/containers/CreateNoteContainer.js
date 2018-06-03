@@ -15,6 +15,7 @@ class CreateNoteContainer extends Component {
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
     this.saveNote = this.saveNote.bind(this);
+    this.goBack = this.goBack.bind(this);
   }
 
   handleTitleChange(event) {
@@ -39,6 +40,10 @@ class CreateNoteContainer extends Component {
     this.props.onSaveNote(title, content);
   }
 
+  goBack() {
+    this.props.history.goBack();
+  }
+
   render() {
     const { title, content } = this.state;
     return (
@@ -60,6 +65,7 @@ class CreateNoteContainer extends Component {
           rows='10'
         />
         <Button onClick={this.saveNote} color="success">Save</Button>
+        <Button onClick={this.goBack} color="secondary">Back</Button>
       </div>
     )
   }
