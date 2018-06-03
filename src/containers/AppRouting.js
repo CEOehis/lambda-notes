@@ -6,14 +6,12 @@ import CreateNoteContainer from 'CreateNoteContainer';
 import EditNoteContainer from 'EditNoteContainer';
 import NoteDetailContainer from 'NoteDetailContainer'
 
-import { notes } from '../mocks/notes';
-
 class AppRouting extends Component {
   constructor() {
     super();
 
     this.state = {
-      notes: notes
+      notes: []
     }
 
     this.onSaveNote = this.onSaveNote.bind(this);
