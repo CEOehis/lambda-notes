@@ -6,12 +6,18 @@ import CreateNoteContainer from 'CreateNoteContainer';
 import EditNoteContainer from 'EditNoteContainer';
 import NoteDetailContainer from 'NoteDetailContainer'
 
+let notesStore = window.localStorage;
+
 class AppRouting extends Component {
   constructor() {
     super();
 
+    // get initial list of notes from localstorage
+    let notes = JSON.parse(notesStore.getItem('lambda-notes'));
+
+    // set initial state to empty array if localstorage doesn't have an instance of 'lambda-notes'
     this.state = {
-      notes: []
+      notes: notes ? notes : []
     }
 
     this.onSaveNote = this.onSaveNote.bind(this);
@@ -29,6 +35,8 @@ class AppRouting extends Component {
     this.setState({
       notes: [...notes, note]
     })
+    // also persist notes in localstorage
+    notesStore.setItem('lambda-notes', JSON.stringify([...notes, note]));
   }
 
   onEditNote(note) {
@@ -37,6 +45,8 @@ class AppRouting extends Component {
     this.setState({
       notes: notesCopy
     })
+    // also persist notes in localstorage
+    notesStore.setItem('lambda-notes', JSON.stringify([...notesCopy]));
   }
 
   onDeleteNote(noteId) {
@@ -45,6 +55,8 @@ class AppRouting extends Component {
     this.setState({
       notes: notesCopy
     })
+    // also persist notes in localstorage
+    notesStore.setItem('lambda-notes', JSON.stringify([...notesCopy]));
   }
 
   render() {
